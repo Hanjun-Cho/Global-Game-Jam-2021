@@ -10,7 +10,7 @@ public class Chunk : MonoBehaviour
 
     private void Start()
     {
-        ammoCount = Random.Range(1, 6);
+        ammoCount = Random.Range(10, 30);
         minX = transform.position.x - xSize / 2;
         maxX = transform.position.x + xSize / 2;
         minY = transform.position.y - ySize / 2;
