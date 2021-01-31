@@ -49,4 +49,14 @@ public class PlayerController : MonoBehaviour
         transform.Translate(moveDir * playerSpeed * Time.deltaTime);
         Position = transform.position;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Zombie")
+        {
+            transform.Find("Main Camera").transform.parent = null;
+            Destroy(gameObject);
+            print("GAME OVER");
+        }
+    }
 }

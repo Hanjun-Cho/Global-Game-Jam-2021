@@ -77,7 +77,8 @@ public class Shooting : MonoBehaviour
     IEnumerator reload()
     {
         yield return new WaitForSeconds(3);
-       
+        FindObjectOfType<AudioManager>().Play("Reload");
+        
         if(totalAmmoCount <= 12)
         {
             currentAmmoCount = totalAmmoCount;
@@ -130,9 +131,12 @@ public class Shooting : MonoBehaviour
             idleHands.SetActive(false);
             pistolaHands.SetActive(true);
         }
+
+        FindObjectOfType<AudioManager>().Play("Pickup");
     }
 
     public void pickUpAmmo(int ammoCount) {
         totalAmmoCount += ammoCount;
+        FindObjectOfType<AudioManager>().Play("Pickup");
     }
 }

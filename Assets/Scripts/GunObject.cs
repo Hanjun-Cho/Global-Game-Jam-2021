@@ -13,6 +13,7 @@ public class GunObject : MonoBehaviour
         if (spawnedStart)
         {
             gun = FindObjectOfType<GameManager>().guns[Random.Range(0, FindObjectOfType<GameManager>().guns.Length)];
+            currentAmmoCount = Random.Range(0, 13);
         }
     }
 

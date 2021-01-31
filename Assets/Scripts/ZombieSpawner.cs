@@ -14,6 +14,12 @@ public class ZombieSpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
+    private void Update()
+    {
+        if(time > 0.3f)
+            time -= Time.deltaTime * 0.001f;
+    }
+
     IEnumerator SpawnEnemy()
     {
         Vector2 spawnPos = PlayerController.Position;

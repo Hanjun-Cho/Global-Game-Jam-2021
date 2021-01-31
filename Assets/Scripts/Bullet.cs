@@ -8,6 +8,11 @@ public class Bullet : MonoBehaviour
     public float moveSpeed = 20;
     public GameObject deathParticles;
 
+    private void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("Shot");
+    }
+
     private void Update()
     {
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);   
