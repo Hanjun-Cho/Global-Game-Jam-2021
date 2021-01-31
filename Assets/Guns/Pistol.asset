@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Pistol
   fullAuto: 0
-  fireRate: 0.5
-  sprite: {fileID: 0}
+  magazineSize: 10
+  gunID: 0
+  fireRate: 0.562
+  droppedSprite: {fileID: 21300000, guid: 75ae5a2a6a8815644afc7367cdac8eb9, type: 3}
+  pickedSprite: {fileID: -8781582721970812450, guid: 64b338a957cefb5458ea1fe942f73581, type: 3}

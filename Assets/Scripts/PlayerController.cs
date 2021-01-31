@@ -2,19 +2,26 @@
 
 public class PlayerController : MonoBehaviour
 {
+    public static Vector2 Position;
     [Range(0, 50)] public float playerSpeed;
     public Transform firePort, armTransform;
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab, muzzleFlash;
 
     private void Update()
     {
         movePlayer();
     }
 
-    public void shoot()
+    public void shoot(GameObject gunBarrel, Gun curGun)
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firePort.transform.position, armTransform.rotation);
         Destroy(bulletObj, 20);
+
+        gunBarrel.GetComponent<Animator>().SetBool("Fire", true);
+        gunBarrel.GetComponent<Animator>().SetInteger("gun ID", curGun.gunID);
+
+        GameObject muzzleFlashObj = Instantiate(muzzleFlash, firePort.transform.position, Quaternion.identity);
+        Destroy(muzzleFlashObj, 1f);
     }
 
     private void movePlayer()
@@ -40,5 +47,6 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(moveDir * playerSpeed * Time.deltaTime);
+        Position = transform.position;
     }
 }

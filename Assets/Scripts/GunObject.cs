@@ -5,7 +5,24 @@ using UnityEngine;
 public class GunObject : MonoBehaviour
 {
     public Gun gun;
-    public bool canEnter = true;
+    public bool canEnter = true, spawnedStart = true;
+    public int currentAmmoCount;
+
+    private void Start()
+    {
+        if (spawnedStart)
+        {
+            gun = FindObjectOfType<GameManager>().guns[Random.Range(0, FindObjectOfType<GameManager>().guns.Length)];
+        }
+    }
+
+    private void Update()
+    {
+        if(gun != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = gun.droppedSprite;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,8 +30,11 @@ public class GunObject : MonoBehaviour
         {
             if (canEnter)
             {
-                collision.GetComponent<Shooting>().pickUpGun(gun);
-                Destroy(gameObject);
+                if(collision.GetComponent<Shooting>().currentGun == null)
+                {
+                    collision.GetComponent<Shooting>().pickUpGun(gun, this);
+                    Destroy(gameObject);
+                }
             }
         }
     }

@@ -5,7 +5,7 @@ public class Gun : ScriptableObject
 {
     public string gunName;
     public bool fullAuto;
-    public int magazineSize;
+    public int magazineSize, gunID;
 
     [Range(0, 1)]
     public float fireRate;

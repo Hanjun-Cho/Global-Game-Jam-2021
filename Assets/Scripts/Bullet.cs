@@ -11,4 +11,13 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);   
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Zombie"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }
