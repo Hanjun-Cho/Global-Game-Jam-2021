@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [Range(0, 50)]
     public float moveSpeed = 20;
+    public GameObject deathParticles;
 
     private void Update()
     {
@@ -17,6 +18,7 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Zombie"))
         {
             Destroy(gameObject);
+            Destroy(Instantiate(deathParticles, transform.position, Quaternion.identity), 2f);
             Destroy(collision.gameObject);
         }
     }
